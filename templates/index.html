@@ -1,0 +1,81 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Price Prediction</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<style>
+    body {
+        background-color: #000; /* Black background color */
+        color: #0f0; /* Green text color */
+    }
+    .form-control {
+        background-color: #000 !important; /* Black color for form fields */
+        color: #0f0; /* Green text color for form fields */
+    }
+    .dropdown-menu {
+        background-color: #000 !important; /* Black background color for dropdown menu */
+    }
+    .dropdown-item {
+        color: #0f0; /* Green text color for dropdown items */
+    }
+    .dropdown-item.active, .dropdown-item:active {
+        color: #0f0 !important; /* Green text color for selected item */
+        background-color: #000 !important; /* Black background for selected item */
+    }
+</style>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Crypto Price Prediction</h1>
+        <form action="/" method="POST" class="text-center">
+            <div class="form-group">
+                <label for="symbol">Select Cryptocurrency:</label>
+                <select class="form-control" id="symbol" name="symbol" required>
+                    <option value="">Select</option>
+                    <option value="BTCUSDT">Bitcoin (BTC)</option>
+                    <option value="ETHUSDT">Ethereum (ETH)</option>
+                    <option value="BNBUSDT">BNB (BNB)</option>
+                    <option value="SOLUSDT">Solana (SOL)</option>
+                    <option value="XRPUSDT">XRP (XRP)</option>
+                    <option value="DOGEUSDT">Dogecoin (DOGE)</option>
+                    <option value="TONUSDT">Toncoin (TON)</option>
+                    <option value="ADAUSDT">Cardano (ADA)</option>
+                    <option value="SHIBUSDT">Shiba Inu (SHIB)</option>
+                    <option value="AVAXUSDT">Avalanche (AVAX)</option>
+                    <!-- Add more options for other cryptocurrencies -->
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="time_frame">Time Frame:</label><br>
+                <div class="form-check form-check-inline">
+                    <input type="radio" id="1h" name="time_frame" value="1h" class="form-check-input" required>
+                    <label for="1h" class="form-check-label">1 Hour</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input type="radio" id="4h" name="time_frame" value="4h" class="form-check-input">
+                    <label for="4h" class="form-check-label">4 Hours</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input type="radio" id="1d" name="time_frame" value="1d" class="form-check-input">
+                    <label for="1d" class="form-check-label">1 Day</label>
+                </div><br><br>
+            </div>
+            <button type="submit" class="btn btn-primary">Predict</button>
+        </form>
+        {% if prediction %}
+        <div class="mt-4">
+            <h2>Predicted Price:</h2>
+            <p>{{ prediction }}</p>
+        </div>
+        {% endif %}
+    </div>
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
